@@ -1,3 +1,5 @@
+#!/bin/bash
+
 docker build -t c01 -f Dockerfile.c01 .
 
 docker build -t c02 -f Dockerfile.c02 .
@@ -7,7 +9,7 @@ docker build -t c03 -f Dockerfile.c03 .
 docker build -t proxy -f Dockerfile.proxy .
 
 
-## INICIALIZANDO AS IMAGENS CRIADAS EM UMA REDE ESPECIFICA PARA OS CONTAINERS POREM SE COMUNICAR ENTRE SI.
+
 
 docker network create -d bridge asa-net
 
