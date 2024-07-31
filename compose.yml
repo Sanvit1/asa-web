@@ -1,0 +1,47 @@
+services:
+  c01:
+    build:
+      context: .
+      dockerfile: Dockerfile.c01
+    image: c01
+    container_name: c01
+    networks:
+      - TEST
+
+  c02:
+    build:
+      context: .
+      dockerfile: Dockerfile.c02
+    image: c02
+    container_name: c02
+    networks:
+      - TEST
+
+  c03:
+    build:
+      context: .
+      dockerfile: Dockerfile.c03
+    image: c03
+    container_name: c03
+    networks:
+      - TEST
+
+  proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile.proxy
+    image: proxy
+    container_name: proxy
+    ports:
+      - "8001:80"
+    depends_on:
+      - c01
+      - c02
+      - c03
+    networks:
+      - TEST
+
+# Docker Networks
+networks:
+  TEST:
+    driver: bridge
